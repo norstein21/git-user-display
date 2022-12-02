@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+import BarChart from './Charts/Bar3D';
 
 const Repos = () => {
   const {repo} = React.useContext(GithubContext);
@@ -20,12 +21,10 @@ const Repos = () => {
     return total;
   }, {})
 
-  console.log(myLanguanges)
+  console.log('my',myLanguanges)
 
   const usedLanguages = Object.values(myLanguanges)
   .sort((a,b)=>{
-    console.log('a',a)
-    console.log('b',b)
     return b.value - a.value
   })
   .slice(0,5);
@@ -37,11 +36,27 @@ const Repos = () => {
     return {...item,value: item.star}
   }).slice(0,5);
 
+  let {stars,fok} = repo.reduce((total,item)=>{
+    const {stargazers_count,name,forks,id} = item;
+    total.stars[stargazers_count] = {label:name, value: stargazers_count};
+    total.fok[forks] = {label:name, value:forks}
+    return total;
+  },
+  {
+    stars: {},
+    fok:{},
+  })
+
+  stars = Object.values(stars).slice(-5).reverse()
+  fok = Object.values(fok).slice(-5).reverse()
+
   return (
   <section className='section'>
     <Wrapper className='section-center'>
       <Pie3D dataChart={usedLanguages} />
       <Doughnut2D dataChart={popularRepo} />
+      <Column3D dataChart={stars} />
+      <BarChart dataChart={fok} />
     </Wrapper>
   </section>
   

@@ -7,7 +7,7 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.candy';
 
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 
-const PieChart = ({dataChart}) =>{
+const Donut2D = ({dataChart}) =>{
   const chartConfigs = {
   type: 'doughnut2d',
   width: '100%',
@@ -34,4 +34,4 @@ const PieChart = ({dataChart}) =>{
 }
 
 
-export default PieChart;
+export default Donut2D;
