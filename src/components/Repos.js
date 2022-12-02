@@ -21,56 +21,27 @@ const Repos = () => {
   }, {})
 
   console.log(myLanguanges)
-  myLanguanges = Object.values(myLanguanges)
+
+  const usedLanguages = Object.values(myLanguanges)
   .sort((a,b)=>{
+    console.log('a',a)
+    console.log('b',b)
     return b.value - a.value
   })
   .slice(0,5);
 
-  const dataChart = [
-    {
-      "label": "HTML",
-      "value": "13"
-    },
-    {
-      "label": "CSS",
-      "value": "70"
-    },
-    {
-      "label": "Javascript",
-      "value": "160"
-    },
-    // {
-    //   "label": "Iran",
-    //   "value": "140"
-    // },
-    // {
-    //   "label": "Russia",
-    //   "value": "115"
-    // },
-    // {
-    //   "label": "UAE",
-    //   "value": "100"
-    // },
-    // {
-    //   "label": "US",
-    //   "value": "30"
-    // },
-    // {
-    //   "label": "China",
-    //   "value": "30"
-    // },
-    // {
-    //   "label": "Indo",
-    //   "value": "700"
-    // },
-  ]
+  const popularRepo = Object.values(myLanguanges)
+  .sort((a,b)=>{
+    return b.star - a.star
+  }).map((item)=>{
+    return {...item,value: item.star}
+  }).slice(0,5);
 
   return (
   <section className='section'>
     <Wrapper className='section-center'>
-      <Pie3D dataChart={myLanguanges} />
-      <Doughnut2D dataChart={myLanguanges} />
+      <Pie3D dataChart={usedLanguages} />
+      <Doughnut2D dataChart={popularRepo} />
     </Wrapper>
   </section>
   

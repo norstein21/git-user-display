@@ -15,14 +15,14 @@ const PieChart = ({dataChart}) =>{
   dataFormat: 'json',
   dataSource: {
   chart: {
-    "caption": "Stats",
-    "subCaption": "My Stats Per Languanges",
+    "caption": "Popular Repo",
+    "subCaption": "My Popular Repo By Languanges",
     // "xAxisName": "Country",
     // "yAxisName": "Reserves (MMbbl)",
     // "numberSuffix": "K",
     "decimal" : 0,
     "doughnutRadius" : "45%" ,
-    "showPercentageValue":0,
+    "showPercentValues":0,
     "theme": "candy"
   },
   data: dataChart
