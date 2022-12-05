@@ -21,7 +21,6 @@ const Repos = () => {
     return total;
   }, {})
 
-  console.log('my',myLanguanges)
 
   const usedLanguages = Object.values(myLanguanges)
   .sort((a,b)=>{
