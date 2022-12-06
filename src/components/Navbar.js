@@ -3,9 +3,16 @@ import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
+  const {
+    loginWithRedirect,
+    isLoading,
+    logout,
+    user,
+    isAuthenticated} = useAuth0();
+
   return (
     <Wrapper>
-      <h2>Navbar</h2>
+      <button onClick={() => loginWithRedirect()}>Log In</button>;
     </Wrapper>
   );
 };
